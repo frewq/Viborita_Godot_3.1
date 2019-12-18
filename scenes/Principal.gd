@@ -14,16 +14,18 @@ func _ready():
 func setup_entidades() -> void:
 	jugador = escena_vibora.instance() as Node2D
 	jugador.connect("mover_activado", self, "_on_Vibora_mover_activado")
-	add_child(jugador)
 	jugador.connect("segmento_cola_creada",self, "_on_Vibora_segmento_cola_creada")
 	jugador.connect("segmento_cuerpo_mover_activado", self, "on_Vibora_segmento_cuerpo_mover_activado")
+	jugador.connect("cambio_tamano", self, "on_Vibora_cambio_tamano")
+	add_child(jugador)
+	move_child(jugador, 0)
 	grilla.colocar_entidad_posicion_random(jugador)
 	
 	setup_entidad_comida()
 
 func setup_entidad_comida() -> void:
 	var comida_instancia: Node2D = escena_comer.instance() as Node2D
-	add_child(comida_instancia)
+	add_child_below_node(jugador, comida_instancia)
 	grilla.colocar_entidad_posicion_random(comida_instancia)
 
 func _on_Vibora_mover_activado(entidad: Node2D, direccion: Vector2) -> void:
@@ -48,10 +50,11 @@ func _on_Grilla_mover_hacia_comida(entidad_comida: Node2D, entidad:Node2D) -> vo
 
 
 func _on_Vibora_segmento_cola_creada(segmento: Node2D, segmento_posicion:Vector2) -> void:
-	add_child(segmento)
+	add_child_below_node(jugador, segmento)
 	grilla.colocar_entidad(segmento, grilla.world_to_map(segmento_posicion))
 
 func on_Vibora_segmento_cuerpo_mover_activado(segmento: Node2D, segmento_posicion: Vector2) -> void:
 	grilla.mover_entidad_a_posicion(segmento, segmento_posicion)
 
-
+func on_Vibora_cambio_tamano(largo: int) -> void:
+	$HUD/LargoVibora.set_text(str(largo))
