@@ -1,3 +1,6 @@
+# Playlist
+# https://www.youtube.com/playlist?list=PLiBLFJ8tU-vUuYNQbfwvug0p-GMAJGmCp
+
 extends Node
 
 const escena_comer = preload("res://entidades/Comida/Comida.tscn")
