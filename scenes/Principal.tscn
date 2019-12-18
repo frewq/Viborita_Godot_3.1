@@ -7,3 +7,4 @@
 script = ExtResource( 1 )
 
 [node name="Grilla" parent="." instance=ExtResource( 2 )]
+[connection signal="hacia_morir" from="Grilla" to="." method="_on_Grilla_hacia_morir"]
