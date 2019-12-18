@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/red.png-88c292608bda02997c053002a9ccd7cb.stex"
+path="res://.import/red.png-61258de7c5ce7b78331045412412f1d1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entidades/Pata/red.png"
-dest_files=[ "res://.import/red.png-88c292608bda02997c053002a9ccd7cb.stex" ]
+source_file="res://entidades/Comida/red.png"
+dest_files=[ "res://.import/red.png-61258de7c5ce7b78331045412412f1d1.stex" ]
 
 [params]
 
