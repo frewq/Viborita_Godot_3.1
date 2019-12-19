@@ -33,18 +33,17 @@ func _process(delta):
 		puede_mover = false
 		$MovimientoRetraso.start()
 
-func _on_ComponenteEntradaJugador_input_detected(nueva_direccion) -> void:
-	if nueva_direccion != direccion * -1: #Evita que la vibora pueda ir en reversa
-		direccion = nueva_direccion
-		print(direccion)
-
-
-func _on_MovimientoRetraso_timeout() -> void:
-	puede_mover = true
-
 func comer() -> void:
 	var segmento_cola: Node2D = escena_cola.instance() as Node2D
 	segmentos_cuerpo.append(segmento_cola)
 	
 	emit_signal("segmento_cola_creada", segmento_cola, segmentos_cuerpo[-2].position)
+
+func _on_ComponenteEntradaJugador_input_detected(nueva_direccion) -> void:
+	if nueva_direccion != direccion * -1: #Evita que la vibora pueda ir en reversa
+		direccion = nueva_direccion
+		print(direccion)
+
+func _on_MovimientoRetraso_timeout() -> void:
+	puede_mover = true
 	
