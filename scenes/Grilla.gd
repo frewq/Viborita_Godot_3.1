@@ -42,7 +42,7 @@ func colocar_entidad_posicion_random(entidad: Node2D) -> void:
 func mover_entidad_en_direccion(entidad: Node2D, direccion: Vector2) -> void:
 	var antigua_grilla_pos: Vector2 = world_to_map(entidad.position)
 	var nueva_grilla_pos: Vector2 = antigua_grilla_pos + direccion
-	if !esta_celda_dentro_limites(nueva_grilla_pos):
+	if !dentro_del_limite(nueva_grilla_pos):
 		setup_grilla()
 		emit_signal("morir")
 		return
@@ -64,7 +64,7 @@ func mover_entidad_a_posicion(entidad:Node2D, nueva_posisicon: Vector2) -> void:
 	colocar_entidad_en_grilla(entidad, nueva_posicion_grilla)
 	entidad.set_position(nueva_posisicon)
 
-func esta_celda_dentro_limites(celda_pos: Vector2) -> bool:
+func dentro_del_limite(celda_pos: Vector2) -> bool:
 	if(celda_pos.x < grilla_tamano.x and celda_pos.x >= 0 \
 		#la barra \ hace que el condicional continue abajo
 		and celda_pos.y < grilla_tamano.y and celda_pos.y >= 0):

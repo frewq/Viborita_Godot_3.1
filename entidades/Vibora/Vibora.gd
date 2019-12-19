@@ -1,3 +1,5 @@
+#TO DO: hacer que camine más lento cuato más grande sea la vibora
+
 extends Node2D
 
 class_name Vibora
