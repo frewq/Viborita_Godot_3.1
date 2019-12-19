@@ -7,12 +7,13 @@ const escena_comer = preload("res://entidades/Comida/Comida.tscn")
 const escena_vibora = preload("res://entidades/Vibora/Vibora.tscn")
 
 onready var grilla: Grilla = get_node("Grilla") as Grilla
-
 var jugador: Node2D
 
 func _ready():
 	randomize()
 	setup_entidades()
+	grilla.connect("morir", self, "_on_Grilla_morir")
+	grilla.connect("mover_hacia_comida", self, "_on_Grilla_mover_hacia_comida")
 
 func setup_entidades() -> void:
 	jugador = escena_vibora.instance() as Node2D
@@ -35,13 +36,11 @@ func borrar_entidad_grupo(nombre: String) -> void:
 	for entidad in entidades:
 		entidad.queue_free()
 	
-#esta conección no se hizo por código, sino por el editor
 func _on_Grilla_morir() -> void:
 	borrar_entidad_grupo("comida")
 	borrar_entidad_grupo("jugador")
 	setup_entidades()
 
-#esta conección no se hizo por código, sino por el editor
 func _on_Grilla_mover_hacia_comida(entidad_comida: Node2D, entidad:Node2D) -> void:
 	if entidad.has_method("comer"):
 		entidad.comer()
@@ -59,4 +58,5 @@ func _on_Vibora_segmento_cuerpo_mover_activado(segmento: Node2D, segmento_posici
 	grilla.mover_entidad_a_posicion(segmento, segmento_posicion)
 
 func _on_Vibora_cambio_tamano(largo: int) -> void:
-	$HUD/LargoVibora.set_text(str(largo))
+#	$LargoVibora.set_text(str(largo))
+	$HUD/VBoxContainer/CenterContainer/LargoVibora.set_text(str(largo))
