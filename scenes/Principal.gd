@@ -35,8 +35,8 @@ func borrar_entidad_grupo(nombre: String) -> void:
 	for entidad in entidades:
 		entidad.queue_free()
 	
-#TIENE que tener este formato: iniciar con el guión, luego el nombre del nodo y luego el nombre de la señal
-func _on_Grilla_hacia_morir() -> void:
+#esta coneccón no se hizo por código, sino por el editor
+func _on_Grilla_morir() -> void:
 	borrar_entidad_grupo("comida")
 	borrar_entidad_grupo("jugador")
 	setup_entidades()

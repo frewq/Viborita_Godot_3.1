@@ -2,7 +2,7 @@ extends TileMap
 
 class_name Grilla
 
-signal hacia_morir
+signal morir
 signal mover_hacia_comida(entidad_comida, entidad)
 
 onready var media_grilla_tamano = get_cell_size() / 2
@@ -44,14 +44,14 @@ func mover_entidad_en_direccion(entidad: Node2D, direccion: Vector2) -> void:
 	var nueva_grilla_pos: Vector2 = antigua_grilla_pos + direccion
 	if !esta_celda_dentro_limites(nueva_grilla_pos):
 		setup_grilla()
-		emit_signal("hacia_morir")
+		emit_signal("morir")
 		return
 	set_posicion_entidad(null, antigua_grilla_pos)
 	var entidad_de_nueva_celda: Node2D = get_posicion_entidad(nueva_grilla_pos)
 	if entidad_de_nueva_celda != null:
 		if entidad_de_nueva_celda.is_in_group("jugador"):
 			setup_grilla()
-			emit_signal("hacia_morir")
+			emit_signal("morir")
 			return
 		elif entidad_de_nueva_celda.is_in_group("comida"):
 			emit_signal("mover_hacia_comida", entidad_de_nueva_celda, entidad)
