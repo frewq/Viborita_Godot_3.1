@@ -35,7 +35,7 @@ func borrar_entidad_grupo(nombre: String) -> void:
 	for entidad in entidades:
 		entidad.queue_free()
 	
-#TIENE que tener este formato: iniciar con el guión, luego el nombre del nodo en nodo y luego el nombre de la señal
+#TIENE que tener este formato: iniciar con el guión, luego el nombre del nodo y luego el nombre de la señal
 func _on_Grilla_hacia_morir() -> void:
 	borrar_entidad_grupo("comida")
 	borrar_entidad_grupo("jugador")
@@ -52,7 +52,7 @@ func _on_Vibora_mover_activado(entidad: Node2D, direccion: Vector2) -> void:
 
 func _on_Vibora_segmento_cola_creada(segmento: Node2D, segmento_posicion:Vector2) -> void:
 	add_child_below_node(jugador, segmento)
-	grilla.colocar_entidad(segmento, grilla.world_to_map(segmento_posicion))
+	grilla.colocar_entidad_en_grilla(segmento, grilla.world_to_map(segmento_posicion))
 
 func _on_Vibora_segmento_cuerpo_mover_activado(segmento: Node2D, segmento_posicion: Vector2) -> void:
 	grilla.mover_entidad_a_posicion(segmento, segmento_posicion)
