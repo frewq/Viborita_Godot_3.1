@@ -66,7 +66,7 @@ func mover_entidad_a_posicion(entidad:Node2D, nueva_posisicon: Vector2) -> void:
 
 func esta_celda_dentro_limites(celda_pos: Vector2) -> bool:
 	if(celda_pos.x < grilla_tamano.x and celda_pos.x >= 0 \
-		#la barra hace que el condicional continua abajo
+		#la barra \ hace que el condicional continue abajo
 		and celda_pos.y < grilla_tamano.y and celda_pos.y >= 0):
 			return true
 	else:

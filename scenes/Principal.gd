@@ -1,4 +1,4 @@
-# Playlist
+# Playlist del tutorial que seguí
 # https://www.youtube.com/playlist?list=PLiBLFJ8tU-vUuYNQbfwvug0p-GMAJGmCp
 
 extends Node
@@ -35,12 +35,13 @@ func borrar_entidad_grupo(nombre: String) -> void:
 	for entidad in entidades:
 		entidad.queue_free()
 	
-#esta coneccón no se hizo por código, sino por el editor
+#esta conección no se hizo por código, sino por el editor
 func _on_Grilla_morir() -> void:
 	borrar_entidad_grupo("comida")
 	borrar_entidad_grupo("jugador")
 	setup_entidades()
 
+#esta conección no se hizo por código, sino por el editor
 func _on_Grilla_mover_hacia_comida(entidad_comida: Node2D, entidad:Node2D) -> void:
 	if entidad.has_method("comer"):
 		entidad.comer()
